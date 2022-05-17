@@ -87,14 +87,14 @@ def ResultIter(competitor, data_size=5000):
 
 
 def get_condition_id(condition):
-    if condition == "newInBox":
+    if condition == "newInBox" or condition == 'newIndBox':
         return "be900e40-8041-464b-951e-c15009df8132"
     elif condition == "newSurplus":
         return "177adc92-f71f-436c-b700-816a438db02a"
     elif condition == "refurbished":
         return "b4a816c9-5604-4578-95f1-57492bc1fb06"
     else:
-        return condition
+        return "5ce27e59-c7ca-4baa-9368-15dac5d3b180"
 
 
 def update_product(cursor, data):
