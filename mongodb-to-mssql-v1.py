@@ -186,7 +186,9 @@ def from_mongodb_to_mssql(competitor):
 def initializer_worker():
     current_thread().cursor = get_new_cursor()
 
-
+now = datetime.now()
+start_time = now.strftime("%H:%M:%S")
+send_slack_message("Algo start time :"+str(start_time))
 executor = concurrent.futures.ThreadPoolExecutor(
     20, initializer=initializer_worker)
 for competitor in COMPETITORS:
