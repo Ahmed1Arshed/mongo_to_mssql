@@ -102,13 +102,13 @@ def update_product(cursor, data):
     manufacturers = list_to_csv_string(data["manufacturers"])
     captured_at = datetime.strptime(data["captured_at"], '%B %d, %Y %H:%M:%S')
     if data['description'] is not None:
-        data['description'] = data['description'].encode('utf8')
+        data['description'] = data['description']
     if data['long_description'] is not None:
-        data['long_description'] = data['long_description'].encode('utf8')
+        data['long_description'] = data['long_description']
     if data['url'] is not None:
-        data['url'] = data['url'].encode('utf8')
+        data['url'] = data['url']
     if data["cutsheet_url"] is not None:
-        data["cutsheet_url"] = data["cutsheet_url"].encode('utf8')
+        data["cutsheet_url"] = data["cutsheet_url"]
     query_args = (
         data["url"], data["alternate_names"], captured_at, data["competitor"], data["cutsheet_url"], data[
             "description"], data["long_description"], manufacturers, data["their_name"], extracted_names,
@@ -127,12 +127,9 @@ def update_images(cursor, data):
         data["images"] = [data["images"]]
     for image in data["images"]:
         query_args = (
-            product_id, image["src"].encode('utf8'), image["alt"].encode(
-                'utf8'), image["title"].encode('utf8'),
-            product_id, image["src"].encode('utf8'), image["alt"].encode(
-                'utf8'), image["title"].encode('utf8'),
-            product_id, image["src"].encode('utf8'), image["alt"].encode(
-                'utf8'), image["title"].encode('utf8')
+            product_id, image["src"], image["alt"], image["title"],
+            product_id, image["src"], image["alt"], image["title"],
+            product_id, image["src"], image["alt"], image["title"]
         )
         execute_query(cursor, IMAGE_QUERY, query_args)
 
