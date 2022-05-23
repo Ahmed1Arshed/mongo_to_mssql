@@ -81,7 +81,7 @@ def get_docs_to_skip_from_json_file():
 def send_slack_message(message):
     payload = json.dumps({"text": message.replace('"', "'")})
     response = requests.post(
-        'https://hooks.slack.com/services/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', data=payload)
+        'https://hooks.slack.com/services/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', data=payload)
     return response
 
 
@@ -266,7 +266,7 @@ def initializer_worker():
 def main():
     get_docs_to_skip_from_json_file()
     executor = concurrent.futures.ThreadPoolExecutor(
-        2, initializer=initializer_worker)
+        20, initializer=initializer_worker)
     products = get_products_chunk_from_mongo()
     while len(products) > 0:
         products_chunks = split_in_chunks(products, 20)
