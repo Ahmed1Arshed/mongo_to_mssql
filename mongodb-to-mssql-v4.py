@@ -81,7 +81,7 @@ def get_docs_to_skip_from_json_file():
 def send_slack_message(message):
     payload = json.dumps({"text": message.replace('"', "'")})
     response = requests.post(
-        'https://hooks.slack.com/services/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', data=payload)
+        'https://hooks.slack.com/services/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', data=payload)
     return response
 
 
