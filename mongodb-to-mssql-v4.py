@@ -266,7 +266,7 @@ def initializer_worker():
 def main():
     get_docs_to_skip_from_json_file()
     executor = concurrent.futures.ThreadPoolExecutor(
-        20, initializer=initializer_worker)
+        2, initializer=initializer_worker)
     products = get_products_chunk_from_mongo()
     while len(products) > 0:
         products_chunks = split_in_chunks(products, 20)
