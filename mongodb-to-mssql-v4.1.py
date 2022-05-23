@@ -36,25 +36,25 @@ DOCS_TO_SKIP = 0
 
 DOCS_CHUNK_SIZE = 10000
 
-SELECT_PRODUCTS = "SELECT id, competitor, their_name FROM scraper_competitor_products_new WHERE competitor IN ({0}) AND their_name IN ({1});"
+SELECT_PRODUCTS = "SELECT id, competitor, their_name FROM scraper_competitor_products WHERE competitor IN ({0}) AND their_name IN ({1});"
 
-INSERT_PRODUCT = "INSERT INTO scraper_competitor_products_new (id, url, alternate_names, captured_at, competitor, cutsheet_url, description, long_description, manufacturers, their_name, created_at, updated_at, extracted_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?);"
+INSERT_PRODUCT = "INSERT INTO scraper_competitor_products (id, url, alternate_names, captured_at, competitor, cutsheet_url, description, long_description, manufacturers, their_name, created_at, updated_at, extracted_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?);"
 
-UPDATE_PRODUCT = "UPDATE scraper_competitor_products_new WITH (UPDLOCK) SET url = ?, alternate_names = ?, competitor = ?, cutsheet_url = ?, description = ?, long_description = ?, manufacturers = ?, their_name = ?, updated_at = CURRENT_TIMESTAMP, extracted_name = ?\
+UPDATE_PRODUCT = "UPDATE scraper_competitor_products WITH (UPDLOCK) SET url = ?, alternate_names = ?, competitor = ?, cutsheet_url = ?, description = ?, long_description = ?, manufacturers = ?, their_name = ?, updated_at = CURRENT_TIMESTAMP, extracted_name = ?\
     WHERE competitor = ? AND their_name = ?;"
 
-SELECT_IMAGES = "SELECT * FROM scraper_competitor_product_images_new WHERE scraper_competitor_product_id in (?);"
+SELECT_IMAGES = "SELECT * FROM scraper_competitor_product_images WHERE scraper_competitor_product_id in (?);"
 
-INSERT_IMAGE = "INSERT INTO scraper_competitor_product_images_new (id, scraper_competitor_product_id, src, alt, title, created_at, updated_at) VALUES (NEWID(), ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);"
+INSERT_IMAGE = "INSERT INTO scraper_competitor_product_images (id, scraper_competitor_product_id, src, alt, title, created_at, updated_at) VALUES (NEWID(), ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);"
 
-UPDATE_IMAGE = "UPDATE scraper_competitor_product_images_new WITH (UPDLOCK) SET src = ?, alt = ?, title = ?, updated_at = CURRENT_TIMESTAMP\
+UPDATE_IMAGE = "UPDATE scraper_competitor_product_images WITH (UPDLOCK) SET src = ?, alt = ?, title = ?, updated_at = CURRENT_TIMESTAMP\
     WHERE scraper_competitor_product_id = ?;"
 
-SELECT_IMAGES = "SELECT * FROM scraper_competitor_product_offers_new WHERE scraper_competitor_product_id in (?);"
+SELECT_IMAGES = "SELECT * FROM scraper_competitor_product_offers WHERE scraper_competitor_product_id in (?);"
 
-INSERT_OFFER = "INSERT INTO scraper_competitor_product_offers_new (id, scraper_competitor_product_id, condition_id, created_at, updated_at, stock, price, currency) VALUES (NEWID(), ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?);"
+INSERT_OFFER = "INSERT INTO scraper_competitor_product_offers (id, scraper_competitor_product_id, condition_id, created_at, updated_at, stock, price, currency) VALUES (NEWID(), ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?);"
 
-UPDATE_OFFER = "UPDATE scraper_competitor_product_offers_new WITH (UPDLOCK) SET condition_id = ?, updated_at = CURRENT_TIMESTAMP, stock = ?, price = ?, currency = ?\
+UPDATE_OFFER = "UPDATE scraper_competitor_product_offers WITH (UPDLOCK) SET condition_id = ?, updated_at = CURRENT_TIMESTAMP, stock = ?, price = ?, currency = ?\
     WHERE scraper_competitor_product_id = ?;"
 
 
