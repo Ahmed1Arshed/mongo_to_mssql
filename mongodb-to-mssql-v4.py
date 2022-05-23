@@ -20,7 +20,7 @@ server = 'electrical.database.windows.net'
 
 pyodbc.pooling = False
 
-connection_str = f"DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={user};PWD={password};MultipleActiveResultSets=True;autocommit=True "
+connection_str = f"DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={user};PWD={password};MultipleActiveResultSets=True "
 
 COMPETITORS = [
     "alliedelec", "baypower", "breakerauthority", "breakerhunter", "breakeroutlet", "chartercontact", "circuitbreaker", "coasttocoastbreaker", "controlparts",
@@ -80,7 +80,7 @@ def get_docs_to_skip_from_json_file():
 
 def send_slack_message(message):
     payload = '{"text":"%s"}' % message
-    response = requests.post('https://hooks.slack.com/services/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'
+    response = requests.post('https://hooks.slack.com/services/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'
     , data = payload)
     return response
 
@@ -274,7 +274,7 @@ def main():
         concurrent.futures.wait(futures)
         if len(products) < DOCS_CHUNK_SIZE:
             break
-        products = get_products_chunk_from_mongo()
+        # products = get_products_chunk_from_mongo()
     set_docs_to_skip(0)
 
 
