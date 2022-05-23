@@ -20,7 +20,7 @@ server = 'electrical.database.windows.net'
 
 pyodbc.pooling = False
 
-connection_str = f"DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={user};PWD={password};MultipleActiveResultSets=True "
+connection_str = f"DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};UID={user};PWD={password};MultipleActiveResultSets=True;autocommit=False "
 
 COMPETITORS = [
     "alliedelec", "baypower", "breakerauthority", "breakerhunter", "breakeroutlet", "chartercontact", "circuitbreaker", "coasttocoastbreaker", "controlparts",
@@ -81,7 +81,7 @@ def get_docs_to_skip_from_json_file():
 def send_slack_message(message):
     payload = json.dumps({"text": message.replace('"', "'")})
     response = requests.post(
-        'https://hooks.slack.com/services/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', data=payload)
+        'https://hooks.slack.com/services/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', data=payload)
     return response
 
 
