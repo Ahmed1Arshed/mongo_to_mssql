@@ -109,7 +109,7 @@ def split_in_chunks(a, n):
 def get_products_chunk_from_mongo(data_size=DOCS_CHUNK_SIZE):
     try:
         docs_to_skip = get_docs_to_skip()
-        results = list(mongodb.competitorproducts.find().sort("_id", 1).skip(docs_to_skip).limit(data_size))
+        results = list(mongodb.competitorproducts.find({"isMatched": True}).sort("_id", 1).skip(docs_to_skip).limit(data_size))
         print("\n\nDocs to skip: ", docs_to_skip, " Results length: ", len(results), "\n\n")
         return results
     except Exception as e:
